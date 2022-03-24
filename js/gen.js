@@ -9,12 +9,19 @@ function agregaPart(participante) {
     nJugador.textContent=participante
     document.getElementById("ppal").appendChild(nJugador)
 
+    qJudagor=document.createElement("option")
+    qJudagor.textContent=participante
+    document.getElementById("leTocaA").appendChild(qJudagor)
+
     document.getElementById("participante").value=""
     
     }
 
     function crearTablero() {
         document.getElementById("ppal").hidden=true
+        document.getElementById("quienesJuegan").hidden=true
+        document.getElementById("aQuienLeToca").hidden=false
+        document.getElementById("anotar").hidden=false
         var cantFilas = 13
         
         // let liq = Array()

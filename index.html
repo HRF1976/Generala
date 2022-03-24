@@ -16,11 +16,49 @@
     <div class="container-fluid alert alert-primary">
         <h1>Generala</h1>
     </div>
-    <div class="input-group mb-3">
+    <div class="input-group mb-3" id="quienesJuegan">
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">¿Quienes juegan hoy?</span>
         </div>
         <input id="participante" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+    </div>
+
+    <div class="input-group mb-3" id="aQuienLeToca" hidden>
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">¿A quién le toca?</span>
+        </div>
+        <select id="leTocaA" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </select>
+    </div>
+
+    
+    <div class="input-group mb-3" id="anotar" hidden>
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Anotar</span>
+        </div>
+        <select id="categoría" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">Escalera</option>
+            <option value="8">Full</option>
+            <option value="9">Poker</option>
+            <option value="10">Generala</option>
+            <option value="11">Generala Doble!</option>
+        </select>
+        <select id="VALOR" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            
+        </select>
+        <button type="button" class="btn btn-success" >Ok!</button>
     </div>
 
     <div class="container-fluid" id="ppal">
