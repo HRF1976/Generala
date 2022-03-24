@@ -32,6 +32,7 @@ function crearTablero() {
     // Creamos un elemento <table> y un elemento <tbody>
     var tabla = document.createElement("table");
     tabla.className = "table table-striped table-dark"
+    
     tabla.id = "juego"
     var tblBody = document.createElement("tbody");
 
@@ -46,6 +47,7 @@ function crearTablero() {
             // texto sea el contenido de <td>, ubica el elemento <td> al final
             // de la hilera de la tabla
             var celda = document.createElement("td");
+            celda.style="text-align=center"
             var textoCelda = document.createTextNode(i);
             celda.appendChild(textoCelda);
             fila.appendChild(celda);
@@ -72,6 +74,7 @@ function crearTablero() {
     for (var j = 0; j < (cant); j++) {
         document.getElementById("juego").rows[0].cells[j + 1].textContent = part[j];
         document.getElementById("juego").rows[0].cells[j + 1].className = "h5";
+        document.getElementById("juego").rows[0].cells[j + 1].style="text-align: center"
     }
     document.getElementById("juego").rows[7].cells[0].textContent = "Escalera";
     //document.getElementById("juego").rows[7].cells[0].className = "h5";
@@ -91,6 +94,7 @@ function crearTablero() {
     for (var i = 1; i < 13; i++) {
         for (var j = 1; j < cant + 1; j++) {
             document.getElementById("juego").rows[i].cells[j].textContent = 0;
+            document.getElementById("juego").rows[i].cells[j].style="text-align: center"
         }
     }
 }
@@ -98,8 +102,11 @@ function crearTablero() {
 function valorOk(c, f) {
     c = part.indexOf(document.getElementById("leTocaA").value) + 1
     f = cat.indexOf(document.getElementById("categoría").value) + 1
-
-    document.getElementById("juego").rows[f].cells[c].textContent = document.getElementById("VALOR").value;
+    var ptos = document.getElementById("VALOR").value
+    document.getElementById("juego").rows[f].cells[c].textContent = ptos;
+    if (ptos==0) {
+        document.getElementById("juego").rows[f].cells[c].style="background-color: #ffffff"; 
+    }
     var total=0
     for (x = 1; x < 12; x++) {
         total = total + parseInt(document.getElementById("juego").rows[x].cells[c].textContent)
