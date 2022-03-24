@@ -12,6 +12,7 @@ function agregaPart(participante) {
 
     qJudagor = document.createElement("option")
     qJudagor.textContent = participante
+    
     document.getElementById("leTocaA").appendChild(qJudagor)
 
     document.getElementById("participante").value = ""
@@ -112,6 +113,11 @@ function valorOk(c, f) {
         total = total + parseInt(document.getElementById("juego").rows[x].cells[c].textContent)
     }
     document.getElementById("juego").rows[12].cells[c].textContent = parseInt(total)
+
+
+    console.log(part.indexOf(document.getElementById("leTocaA").value))
+    console.log(cant)
+
 }
 
 function elijeCategoría() {
