@@ -5,14 +5,16 @@ function agregaPart(participante) {
 
     cant = cant + 1
     part.push(participante)
-    console.log(cant)
-    console.log(part)
+    nJugador=document.createElement("div")
+    nJugador.textContent=participante
+    document.getElementById("ppal").appendChild(nJugador)
+
+    document.getElementById("participante").value=""
     
     }
 
     function crearTablero() {
-        // window.open("tabla.html")
-        // window.location.href='tabla.html'
+        document.getElementById("ppal").hidden=true
         var cantFilas = 13
         
         // let liq = Array()
