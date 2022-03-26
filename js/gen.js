@@ -114,8 +114,13 @@ function valorOk(c, f) {
     }
     document.getElementById("juego").rows[12].cells[c].textContent = parseInt(total)
 
+    if (part[c-1]== part[cant-1]) {
+        document.getElementById("leTocaA").value=part[0]
+    } else {
+        document.getElementById("leTocaA").value=part[c]
+    }
 
-    console.log(part.indexOf(document.getElementById("leTocaA").value))
+    console.log(part[c-1])
     console.log(cant)
 
 }
