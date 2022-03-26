@@ -1,6 +1,7 @@
 let cant = 0
 let part = []
 let cat = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
+let meFalta = []
 
 function agregaPart(participante) {
 
@@ -12,7 +13,7 @@ function agregaPart(participante) {
 
     qJudagor = document.createElement("option")
     qJudagor.textContent = participante
-    
+
     document.getElementById("leTocaA").appendChild(qJudagor)
 
     document.getElementById("participante").value = ""
@@ -33,7 +34,7 @@ function crearTablero() {
     // Creamos un elemento <table> y un elemento <tbody>
     var tabla = document.createElement("table");
     tabla.className = "table table-striped table-dark"
-    
+
     tabla.id = "juego"
     var tblBody = document.createElement("tbody");
 
@@ -48,7 +49,7 @@ function crearTablero() {
             // texto sea el contenido de <td>, ubica el elemento <td> al final
             // de la hilera de la tabla
             var celda = document.createElement("td");
-            celda.style="text-align=center"
+            celda.style = "text-align=center"
             var textoCelda = document.createTextNode(i);
             celda.appendChild(textoCelda);
             fila.appendChild(celda);
@@ -75,7 +76,7 @@ function crearTablero() {
     for (var j = 0; j < (cant); j++) {
         document.getElementById("juego").rows[0].cells[j + 1].textContent = part[j];
         document.getElementById("juego").rows[0].cells[j + 1].className = "h5";
-        document.getElementById("juego").rows[0].cells[j + 1].style="text-align: center"
+        document.getElementById("juego").rows[0].cells[j + 1].style = "text-align: center"
     }
     document.getElementById("juego").rows[7].cells[0].textContent = "Escalera";
     //document.getElementById("juego").rows[7].cells[0].className = "h5";
@@ -94,8 +95,8 @@ function crearTablero() {
     }
     for (var i = 1; i < 13; i++) {
         for (var j = 1; j < cant + 1; j++) {
-            document.getElementById("juego").rows[i].cells[j].textContent = 0;
-            document.getElementById("juego").rows[i].cells[j].style="text-align: center"
+            document.getElementById("juego").rows[i].cells[j].textContent = "";
+            document.getElementById("juego").rows[i].cells[j].style = "text-align: center"
         }
     }
 }
@@ -105,23 +106,25 @@ function valorOk(c, f) {
     f = cat.indexOf(document.getElementById("categoría").value) + 1
     var ptos = document.getElementById("VALOR").value
     document.getElementById("juego").rows[f].cells[c].textContent = ptos;
-    if (ptos==0) {
-        document.getElementById("juego").rows[f].cells[c].style="background-color: #ffffff"; 
+    if (ptos == 0) {
+        //document.getElementById("juego").rows[f].cells[c].style="background-color: #ffffff"; 
+        document.getElementById("juego").rows[f].cells[c].value = 0
     }
-    var total=0
+    var total = 0
     for (x = 1; x < 12; x++) {
-        total = total + parseInt(document.getElementById("juego").rows[x].cells[c].textContent)
+        if (document.getElementById("juego").rows[x].cells[c].textContent == "") {
+            total = total
+        } else {
+            total = total + parseInt(document.getElementById("juego").rows[x].cells[c].textContent)
+        }
     }
     document.getElementById("juego").rows[12].cells[c].textContent = parseInt(total)
 
-    if (part[c-1]== part[cant-1]) {
-        document.getElementById("leTocaA").value=part[0]
+    if (part[c - 1] == part[cant - 1]) {
+        document.getElementById("leTocaA").value = part[0]
     } else {
-        document.getElementById("leTocaA").value=part[c]
+        document.getElementById("leTocaA").value = part[c]
     }
-
-    console.log(part[c-1])
-    console.log(cant)
 
 }
 
@@ -274,4 +277,19 @@ function elijeCategoría() {
             break;
     }
 
+}
+
+function qMeFalta() {
+    c = part.indexOf(document.getElementById("leTocaA").value) + 1
+    meFalta.splice(0, meFalta.length)
+
+    for (x = 1; x < 12; x++) {
+        if (document.getElementById("juego").rows[x].cells[c].textContent == "") {
+            meFalta.push(document.getElementById("juego").rows[x].cells[0].textContent)
+        }
+
+    }
+    
+    document.getElementById("mensajeModal").textContent=meFalta
+    document.getElementById("títuloModal").textContent=document.getElementById("leTocaA").value+", te faltan estos:"
 }
