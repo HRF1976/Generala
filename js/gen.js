@@ -285,7 +285,7 @@ function qMeFalta() {
 
     for (x = 1; x < 12; x++) {
         if (document.getElementById("juego").rows[x].cells[c].textContent == "") {
-            meFalta.push(document.getElementById("juego").rows[x].cells[0].textContent)
+            meFalta.push(document.getElementById("juego").rows[x].cells[0].textContent + " ")
         }
 
     }
