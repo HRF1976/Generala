@@ -4,6 +4,9 @@ let cat = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
 let meFalta = []
 
 function agregaPart(participante) {
+    if (document.getElementById("participante").value=="") {
+        alert("Debe ingresar un nombre para el participante")
+    }
 
     cant = cant + 1
     part.push(participante)
@@ -17,7 +20,7 @@ function agregaPart(participante) {
     document.getElementById("leTocaA").appendChild(qJudagor)
 
     document.getElementById("participante").value = ""
-
+    document.getElementById("participante").focus()
 }
 
 function crearTablero() {
